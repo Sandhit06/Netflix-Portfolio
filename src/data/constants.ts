@@ -189,7 +189,7 @@ export const timelineData: TimelineItem[] = [
 export const profileBannerData = {
     headline: "Sandhit Karmakar - Full Stack Developer",
     profileSummary: "A final-year B.Tech student specializing in CSE - AI & ML at VIT Chennai, with a strong passion for software development and a proven track record of delivering innovative solutions. My core expertise lies in Flutter, where I have developed robust, visually appealing applications for both Android and iOS, while also expanding my skill set in full-stack development using JavaScript frameworks.Throughout my academic and early professional journey, I have progressed from a junior developer to taking on key responsibilities in project management and client engagement. A notable achievement includes spearheading the redesign of a flagship product, leading to a 25% increase in user retention.",
-    resumeLink: "https://drive.google.com/file/d/1sXeBReMcn7q5f1MGbfYZjrYJ9SIWIB_X/view?usp=sharing",
+    resumeLink: "https://drive.google.com/file/d/1SYef5J5tPc6mdBhz2I939rmt25RI9s5h/view?usp=sharing",
     linkedinLink: "https://www.linkedin.com/in/sandhit-karmakar/",
     backgroundImage: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTZ5eWwwbjRpdWM1amxyd3VueHhteTVzajVjeGZtZGJ1dDc4MXMyNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/16u7Ifl2T4zYfQ932F/giphy.gif"
 };
