@@ -188,3 +188,27 @@ body {
   color: #f90707 !important;
   /* ✅ Force pure white just for this line */
 }
+
+.contact-invite {
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ccc;
+}
+
+/* 📱 Responsive fix for smaller screens */
+@media (max-width: 768px) {
+  .contact-invite {
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .coffee-icon {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+  }
+}
