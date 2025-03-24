@@ -1,5 +1,7 @@
 <h1 align="center"><b>🎬 NETFLIX-Themed Developer Portfolio</b></h1>
 
+![Demo App](/img.jpeg)
+
 ## 📌 Introduction
 A sleek, animated, **Netflix-inspired portfolio** showcasing your software engineering skills, projects, certifications, blogs, music, and even a mini-game-all wrapped in a professional, cinematic UI.
 
