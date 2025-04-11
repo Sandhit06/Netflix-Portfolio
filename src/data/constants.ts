@@ -118,7 +118,7 @@ export const timelineData: TimelineItem[] = [
             'Implemented robust login and sign-up features, independently overseeing the project from design to deployment.',
             'Streamlined development and deployment processes by leveraging Jira & Agile methodologies.',
         ],
-        dateRange: 'Aug 2023 - Dec 2023'
+        dateRange: 'Aug 2023 - Apr 2024'
     },
     {
         timelineType: 'work',
@@ -131,7 +131,7 @@ export const timelineData: TimelineItem[] = [
             'Redesigned the app UI framework, introducing new features and a user-friendly interface, resulting in a 25%increase in user engagement and a 15% improvement in user retention.',
             'Identified and resolved critical bugs, improving app stability and boosting performance, leading to a reduction incrash reports.',
         ],
-        dateRange: 'Jun 2023 - Aug 2023'
+        dateRange: 'May 2023 - Aug 2023'
     },
     {
         timelineType: 'work',
