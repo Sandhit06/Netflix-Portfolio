@@ -118,7 +118,7 @@ export const timelineData: TimelineItem[] = [
             'Implemented robust login and sign-up features, independently overseeing the project from design to deployment.',
             'Streamlined development and deployment processes by leveraging Jira & Agile methodologies.',
         ],
-        dateRange: 'Aug 2023 - Apr 2024'
+        dateRange: 'Aug 2023 - Apr 2025'
     },
     {
         timelineType: 'work',
@@ -131,7 +131,7 @@ export const timelineData: TimelineItem[] = [
             'Redesigned the app UI framework, introducing new features and a user-friendly interface, resulting in a 25%increase in user engagement and a 15% improvement in user retention.',
             'Identified and resolved critical bugs, improving app stability and boosting performance, leading to a reduction incrash reports.',
         ],
-        dateRange: 'May 2023 - Aug 2023'
+        dateRange: 'May 2022 - Aug 2023'
     },
     {
         timelineType: 'work',
@@ -189,7 +189,7 @@ export const timelineData: TimelineItem[] = [
 export const profileBannerData = {
     headline: "Sandhit Karmakar - Full Stack Developer",
     profileSummary: "A final-year B.Tech student specializing in CSE - AI & ML at VIT Chennai, with a strong passion for software development and a proven track record of delivering innovative solutions. My core expertise lies in Flutter, where I have developed robust, visually appealing applications for both Android and iOS, while also expanding my skill set in full-stack development using JavaScript frameworks.Throughout my academic and early professional journey, I have progressed from a junior developer to taking on key responsibilities in project management and client engagement. A notable achievement includes spearheading the redesign of a flagship product, leading to a 25% increase in user retention.",
-    resumeLink: "https://drive.google.com/file/d/1SYef5J5tPc6mdBhz2I939rmt25RI9s5h/view?usp=sharing",
+    resumeLink: "https://drive.google.com/file/d/1BODZFawoOLGH89k0TrMUeF-fR1PKwExU/view?usp=sharing",
     linkedinLink: "https://www.linkedin.com/in/sandhit-karmakar/",
     backgroundImage: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTZ5eWwwbjRpdWM1amxyd3VueHhteTVzajVjeGZtZGJ1dDc4MXMyNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/16u7Ifl2T4zYfQ932F/giphy.gif"
 };
