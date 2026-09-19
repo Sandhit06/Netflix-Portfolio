@@ -60,7 +60,10 @@ const App: React.FC = () => {
           <Route path="/music" element={<Layout><Music /></Layout>} />
           <Route path="/reading" element={<Layout><Reading /></Layout>} />
           <Route path="/blogs" element={<Layout><Blogs /></Layout>} />
-          <Route path="/game" element={<PageTransition><Game /></PageTransition>} />
+          {/* Keep the iframe outside the animated transform wrapper. Some
+              mobile browsers stop forwarding touch events to cross-origin
+              iframes mounted inside transformed elements. */}
+          <Route path="/game" element={<Game />} />
           <Route path="/certifications" element={<Layout><Certifications /></Layout>} />
         </Routes>
       </AnimatePresence>
