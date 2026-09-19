@@ -15,11 +15,6 @@ const Navbar: React.FC = () => {
   const profileImage = localStorage.getItem('profileImage') || blueImage;
   const profileName = localStorage.getItem('selectedProfile') || 'Recruiter';
 
-  const handleScroll = () => {
-    console.log("Current scroll position:", window.scrollY);
-    setIsScrolled(window.scrollY > 80);
-  };
-
   useEffect(() => {
     // We attach the scroll event with { capture: true } 
     // This forces the window to listen to ANY scrolling happening inside ANY element on the page

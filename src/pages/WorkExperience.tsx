@@ -6,7 +6,6 @@ import { MdOutlineWork as WorkIcon } from 'react-icons/md';
 import { IoSchool as SchoolIcon } from 'react-icons/io5';
 import { FaStar as StarIcon } from 'react-icons/fa';
 import './WorkExperience.css';
-import { TimelineItem } from '../types';
 import { timelineData } from '../data/constants';
 
 

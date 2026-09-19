@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import './Blogs.css';
-import { FaMedium, FaDev } from 'react-icons/fa';
+import { FaMedium } from 'react-icons/fa';
 import { staggerContainer, fadeSlideUp, cardHover } from '../motion';
 
 const blogs = [

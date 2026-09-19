@@ -48,7 +48,6 @@ const TopPicksRow: React.FC<TopPicksRowProps> = ({ profile }) => {
   const navigate = useNavigate();
   const topPicks = topPicksConfig[profile];
   const constraintsRef = useRef<HTMLDivElement>(null);
-  const dragDistanceRef = useRef(0);
 
   return (
     <div className="top-picks-row">

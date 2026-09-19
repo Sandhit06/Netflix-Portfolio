@@ -43,7 +43,6 @@ const continueWatchingConfig = {
 const ContinueWatching: React.FC<ContinueWatchingProps> = ({ profile }) => {
   const continueWatching = continueWatchingConfig[profile];
   const constraintsRef = useRef<HTMLDivElement>(null);
-  const dragDistanceRef = useRef(0);
   const MotionLink = motion.create(Link);
 
   return (

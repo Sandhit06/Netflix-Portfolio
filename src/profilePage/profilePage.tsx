@@ -1,6 +1,6 @@
 // ProfilePage.tsx
 import React from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './ProfilePage.css';
 
 import ProfileBanner from './ProfileBanner';
