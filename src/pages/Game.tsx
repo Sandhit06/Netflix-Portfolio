@@ -29,8 +29,8 @@ const Game: React.FC = () => {
                     src="https://cuberun.adamkarlsten.com/"
                     title="Cube Run"
                     className="game-iframe"
-                    sandbox="allow-scripts allow-same-origin"
-                    allow="fullscreen"
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-pointer-lock"
+                    allow="fullscreen; autoplay; gamepad; pointer-lock"
                     loading="lazy"
                 />
             </div>

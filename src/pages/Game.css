@@ -23,6 +23,10 @@
     border: none;
     display: block;
     pointer-events: auto;
+    /* Let taps reach the embedded game's own controls on touch screens. */
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .netflix-close-button {
