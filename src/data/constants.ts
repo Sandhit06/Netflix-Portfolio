@@ -53,52 +53,61 @@ export const skillsData = [
 ];
 
 
-// Projects
+// Projects: paste each project's full https:// website URL into websiteUrl.
+// Leave it empty to keep the card without a destination.
 export const projectsData = [
     {
         title: "CodeNexus",
+        websiteUrl: "https://codenexus-sandhit.vercel.app/",
         description: "A Next.js & TypeScript-powered interview platform with secure authentication, real-time video calls, screen sharing, recording, and seamless interview management for scalability and high performance.",
         techUsed: "React, CSS3",
         image: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742576766/codenexus_1_hrccxa.avif", // Place this image inside public/images
     },
     {
         title: "AI Finance Platform",
+        websiteUrl: "https://github.com/Sandhit06/AI-Finance-Platform",
         description: "A Full-Stack AI-powered finance platform featuring secure authentication, transaction management, AI insights, budgeting, and automated workflows for scalability and performance.",
         techUsed: "Next.js, Express.js, CSS3, MongoDB",
         image: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742576765/welth_1_s7rlyp.avif",
     },
     {
         title: "3D-Iphone Website",
+        websiteUrl: "https://sandhit-iphone.vercel.app/",
         description: "A fully responsive Apple iPhone 15 Pro website clone using React.js, Three.js, GSAP, and TailwindCSS, featuring smooth animations, dynamic 3D model rendering, a custom video carousel, and an optimized user experience.",
         techUsed: "React, CSS3",
         image: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742578742/iphone_1_wxmmus.webp",
     },
     {
         title: "Car Rent",
+        websiteUrl: "https://github.com/Sandhit06/Car-Rental-App",
         description: "A Next.js & TypeScript-powered car showcase platform with advanced search, filtering, SSR, API-driven real-time data, responsive design, and SEO optimization for seamless user experience and performance.",
         techUsed: "Next.js, CSS3, MongoDB",
         image: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742576765/carrent_1_msijzr.avif",
     },
     {
         title: "NOVA",
+        websiteUrl: "https://sandhit-nova.vercel.app/",
         description: "Designed and developed a visually captivating website inspired by Zentry, leveraging React.js, GSAP, and Tailwind CSS to implement scroll-triggered animations, geometric transitions, interactive 3D hover effects, and seamless video storytelling, ensuring a luxurious and responsive user experience.",
         techUsed: "React, CSS3",
         image: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742579516/imag_rnjjna.jpg",
     },
     {
         title: "Vibe Store App",
+        websiteUrl: "https://github.com/Sandhit06/ECommerce-App",
         description: "Vibe Store is an e-commerce app featuring a checkout system, coupon discounts, product search, MVVM architecture, and seamless UI animations, built using Fake Store API for a smooth shopping experience.",
         techUsed: "Kotlin, MongoDB",
         image: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742576765/vibe_1_h0gsrm.avif",
     },
     {
         title: "Weather App",
+        websiteUrl: "https://github.com/Sandhit06/suraksha",
         description: "Flutter Weather App provides real-time weather updates using the Weather API, featuring a sleek UI, geolocation-based forecasts, and dynamic weather animations for an intuitive user experience.",
         techUsed: "Flutter, Firebase, RESTful API",
         image: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742576822/weather_1_hepsuy.jpg",
     },
     {
         title: "Bank App",
+        websiteUrl: "https://github.com/Sandhit06/XNL-21BAI1743-MOBILE-1",
         description: "Highly scalable, event-driven fintech platform with microservices architecture, real-time transactions, AI-powered risk management, and Kubernetes-based cloud deployment for seamless financial operations.",
         techUsed: "Flutter, Express.js, Firebase",
         image: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742565908/bank1_tvrsbw.avif",

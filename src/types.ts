@@ -19,6 +19,7 @@ export interface TimelineItem {
 
 export interface Project {
   title: string;
+  websiteUrl: string;
   description: string;
   techUsed: string;
   image: string;                   // Now just a string path or import

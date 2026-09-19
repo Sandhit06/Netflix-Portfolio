@@ -93,7 +93,15 @@ const Projects: React.FC = () => {
         viewport={{ once: true, amount: 0.1 }}
       >
         {projects.map((project, index) => (
-          <motion.div key={index} className="project-card" variants={fadeSlideUp} {...cardHover}>
+          <motion.a
+            key={index}
+            href={project.websiteUrl.trim() || undefined}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-card"
+            variants={fadeSlideUp}
+            {...cardHover}
+          >
             <img src={project.image} alt={project.title} className="project-image" />
             <div className="project-details">
               <h3>{project.title}</h3>
@@ -106,7 +114,7 @@ const Projects: React.FC = () => {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </motion.a>
         ))}
       </motion.div>
     </div>
