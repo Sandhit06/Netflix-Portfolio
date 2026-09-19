@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './theme.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { MotionConfig } from 'framer-motion';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <Router>
-    <App />
-  </Router>
+  <MotionConfig reducedMotion="user">
+    <Router>
+      <App />
+    </Router>
+  </MotionConfig>
 );
 
 // If you want to start measuring performance in your app, pass a function

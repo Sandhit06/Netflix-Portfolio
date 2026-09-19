@@ -1,7 +1,7 @@
 .projects-container {
   padding: 120px 20px;
-  background-color: #141414;
-  color: #fff;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
 }
 
 .projects-grid {
@@ -12,19 +12,18 @@
 }
 
 .project-card {
-  background: #1e1e1e;
-  border-radius: 12px;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(160%);
+  backdrop-filter: blur(var(--blur-md)) saturate(160%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 6px 15px rgba(160, 16, 16, 0.6); /* Base shadow */
-  opacity: 0;
-  animation: fadeInUp 0.5s forwards ease-in-out;
-  animation-delay: var(--delay);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--duration-base) var(--ease-standard);
 }
 
 .project-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(244, 0, 13, 0.6); /* Netflix shadow */
+  box-shadow: var(--shadow-accent);
   cursor: pointer;
 }
 
@@ -32,8 +31,8 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-bottom: 2px solid #e50914;
-  transition: transform 0.3s ease;
+  border-bottom: 2px solid var(--accent);
+  transition: transform var(--duration-base) var(--ease-standard);
 }
 
 .project-card:hover .project-image {
@@ -46,15 +45,15 @@
 
 .project-details h3 {
   font-size: 1.2rem;
-  color: #e74e56;
+  color: var(--accent);
   margin-bottom: 10px;
-  color: #e50914;
 }
 
 .project-details p {
   font-size: 0.8rem;
   margin-bottom: 15px;
   line-height: 1.2rem;
+  color: var(--text-secondary);
 }
 
 .tech-used {
@@ -67,20 +66,23 @@
 .tech-badge {
   display: inline-flex;
   align-items: center;
-  padding: 5px 10px;
-  border-radius: 12px;
-  background: #2c2c2c;
-  color: #fff;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--glass-bg-subtle);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
   font-size: 0.8rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+  box-shadow: var(--shadow-sm);
 }
 
 .tech-badge:hover {
   transform: scale(1.1);
-  background-color: #e50914;
+  background-color: var(--accent);
   color: #fff;
-  box-shadow: 0 4px 10px rgba(229, 9, 20, 0.6); /* Netflix shadow */
+  box-shadow: var(--shadow-accent);
 }
 
 .tech-badge svg {

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './ContinueWatching.css';
+import { cardHover } from '../motion';
 
-type ProfileType = 'Recruiter' | 'developer' | 'stalker' | 'Adventurer';
+type ProfileType = 'Recruiter' | 'Developer' | 'Stalker' | 'Adventurer';
 
 interface ContinueWatchingProps {
   profile: ProfileType;
@@ -16,7 +18,7 @@ const continueWatchingConfig = {
     { title: "Games", imgSrc: "https://t4.ftcdn.net/jpg/06/25/34/17/360_F_625341714_HNehTMy2h6JyeS6xdT7dZV4kBvB32JHM.jpg", link: "/game" },
     { title: "Contact Me", imgSrc: "https://res.cloudinary.com/dyz1paeem/image/upload/t_optimized_new/v1742724460/nyc_szs8su.webp", link: "/contact-me" }
   ],
-  developer: [
+  Developer: [
     { title: "Music", imgSrc: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742576765/artists_bwg2lu.avif", link: "/music" },
     { title: "Blogs", imgSrc: "https://res.cloudinary.com/dyz1paeem/image/upload/t_optimized_new/v1742626733/vIhgK26nDY8-HkkD_1_unayka.webp", link: "/blogs" },
     { title: "Certifications", imgSrc: "https://picsum.photos/id/1028/300/200", link: "/certifications" },
@@ -24,7 +26,7 @@ const continueWatchingConfig = {
     { title: "Contact Me", imgSrc: "https://res.cloudinary.com/dyz1paeem/image/upload/t_optimized_new/v1742724460/nyc_szs8su.webp", link: "/contact-me" },
     { title: "Reading", imgSrc: "https://picsum.photos/id/1026/300/200", link: "/reading" },
   ],
-  stalker: [
+  Stalker: [
     { title: "Reading", imgSrc: "https://picsum.photos/id/1026/300/200", link: "/reading" },
     { title: "Blogs", imgSrc: "https://res.cloudinary.com/dyz1paeem/image/upload/t_optimized_new/v1742626733/vIhgK26nDY8-HkkD_1_unayka.webp", link: "/blogs" },
     { title: "Contact Me", imgSrc: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742626141/photo-1500916434205-0c77489c6cf7_optimized_10_ydw1px.jpg", link: "/contact-me" }
@@ -40,19 +42,29 @@ const continueWatchingConfig = {
 
 const ContinueWatching: React.FC<ContinueWatchingProps> = ({ profile }) => {
   const continueWatching = continueWatchingConfig[profile];
+  const constraintsRef = useRef<HTMLDivElement>(null);
+  const dragDistanceRef = useRef(0);
+  const MotionLink = motion.create(Link);
 
   return (
     <div className="continue-watching-row">
       <h2 className="row-title">Continue Watching for {profile}</h2>
-      <div className="card-row">
-        {continueWatching.map((pick, index) => (
-          <Link to={pick.link} key={index} className="pick-card">
-            <img src={pick.imgSrc} alt={pick.title} className="pick-image" />
-            <div className="overlay">
-              <div className="pick-label">{pick.title}</div>
-            </div>
-          </Link>
-        ))}
+      <div className="card-row-viewport" ref={constraintsRef}>
+        <motion.div className="card-row">
+          {continueWatching.map((pick, index) => (
+            <MotionLink
+              to={pick.link}
+              key={index}
+              className="pick-card"
+              {...cardHover}
+            >
+              <img src={pick.imgSrc} alt={pick.title} className="pick-image" draggable={false} />
+              <div className="overlay">
+                <div className="pick-label">{pick.title}</div>
+              </div>
+            </MotionLink>
+          ))}
+        </motion.div>
       </div>
     </div>
   );

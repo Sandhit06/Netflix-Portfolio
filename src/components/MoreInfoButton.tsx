@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { buttonTap } from '../motion';
 import './MoreInfoButton.css';
 
 interface MoreInfoButtonProps {
@@ -8,7 +10,7 @@ interface MoreInfoButtonProps {
 
 const MoreInfoButton: React.FC<MoreInfoButtonProps> = ({ onClick, label = "More Info" }) => {
   return (
-    <button className="more-info-button" onClick={onClick} type="button">
+    <motion.button className="more-info-button glass" onClick={onClick} type="button" {...buttonTap}>
       <div className="icon-container">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +31,7 @@ const MoreInfoButton: React.FC<MoreInfoButtonProps> = ({ onClick, label = "More 
       </div>
       <div className="spacer"></div>
       <span className="label">{label}</span>
-    </button>
+    </motion.button>
   );
 };
 

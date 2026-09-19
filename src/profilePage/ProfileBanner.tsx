@@ -1,8 +1,10 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './ProfileBanner.css';
 import PlayButton from '../components/PlayButton';
 import MoreInfoButton from '../components/MoreInfoButton';
 import { ProfileBanner as ProfileBannerType } from '../types';
+import { staggerContainer, fadeSlideUp } from '../motion';
 
 interface ProfileBannerProps {
   bannerData: ProfileBannerType;
@@ -19,19 +21,21 @@ const ProfileBanner: React.FC<ProfileBannerProps> = ({ bannerData }) => {
 
   return (
     <div className="profile-banner">
-      <div className="banner-content">
-        <h1 className="banner-headline" id="headline">
+      <motion.div
+        className="banner-content"
+        variants={staggerContainer(0.15)}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h1 className="banner-headline" id="headline" variants={fadeSlideUp}>
           {bannerData.headline}
-        </h1>
-        <p className="banner-description">
-          {bannerData.profileSummary}
-        </p>
+        </motion.h1>
 
-        <div className="banner-buttons">
+        <motion.div className="banner-buttons" variants={fadeSlideUp}>
           <PlayButton onClick={handlePlayClick} label="Resume" />
           <MoreInfoButton onClick={handleLinkedinClick} label="Linkedin" />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

@@ -1,0 +1,5 @@
+few changes to be made.
+1. Move the light mode from this website. Only dark feature by default.
+2. No need to keep the description of Sandhit Karmakar like A final-year B.Tech student specializing in CSE .............. etc. Remove that whole line and shift the "Sandhit Karmakar - Full Stack Developer" to below, just above the Resume and linkedin buttons.
+
+3. The sections - Today's top pics for recruiters and Continue watching the cards by default do not have written as which card they belong. For eg - only when we hover over the card we are able to see the "skills" word. Not before that by default. I want the each card to show by default with white color as Skills, Projects etc. Then when user hovers over that the background of the card becomes blurred. 

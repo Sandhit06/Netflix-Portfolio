@@ -12,8 +12,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #121212;
-  color: white;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -31,16 +31,15 @@ body {
   padding: 2rem 1rem;
 }
 
-/* === FOOTER === */
+/* === FOOTER — floating glass dock === */
 .contact-footer {
-  width: 100%;
-  background-color: #141414;
-  color: #999;
-  border-top: 1px solid #333;
+  width: calc(100% - 2rem);
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  color: var(--text-tertiary);
   text-align: center;
-  padding: 1rem 0;
-  margin-top: auto;
-  /* Pushes footer to bottom */
+  padding: 1.25rem 1rem;
+  border-radius: var(--radius-lg);
 }
 
 .social-icons {
@@ -51,41 +50,45 @@ body {
 }
 
 .social-icons a {
-  color: #999;
+  color: var(--text-secondary);
   font-size: 1.5rem;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition: transform var(--duration-fast) var(--ease-spring-out),
+    color var(--duration-base) var(--ease-standard);
 }
 
 .social-icons a:hover {
   transform: scale(1.2);
-  color: #a09e9e;
+  color: var(--accent);
 }
 
 .footer-text {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-tertiary);
 }
 
-/* === LINKEDIN BADGE === */
+/* === LINKEDIN BADGE (background/blur/shadow supplied by .glass utility) === */
 .linkedin-badge-custom {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #222;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   padding: 15px 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  color: #e6e6e6;
-  max-width: 350px;
+  color: var(--text-primary);
+  /* THE FIX: Increased from 350px to 600px to make the box wider */
+  max-width: 600px; 
+  width: 100%; /* Added this so it stays responsive on small screens */
   margin-bottom: 20px;
 }
 
 .badge-avatar {
-  width: 60px;
-  height: 60px;
+  width: 95px;
+  height: 100px;
   border-radius: 50%;
   margin-right: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-sm);
+
+  /* THE FIX: Forces the image to crop perfectly into the circle */
+  object-fit: cover;
 }
 
 .badge-content {
@@ -96,24 +99,24 @@ body {
   font-size: 1.1rem;
   font-weight: bold;
   margin: 0;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .badge-title {
   font-size: 0.9rem;
   margin: 0;
-  color: #aaa;
+  color: var(--text-secondary);
 }
 
 .badge-description {
   font-size: 0.85rem;
   margin: 5px 0;
-  color: #ccc;
+  color: var(--text-secondary);
 }
 
 .badge-company {
   font-size: 0.85rem;
-  color: #888;
+  color: var(--text-tertiary);
 }
 
 .badge-link {
@@ -122,11 +125,11 @@ body {
   background-color: #0077b5;
   color: #fff;
   padding: 8px 12px;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   font-weight: bold;
   text-decoration: none;
   margin-top: 10px;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--duration-base) var(--ease-standard);
 }
 
 .badge-link:hover {
@@ -185,8 +188,7 @@ body {
 }
 
 .white-only {
-  color: #f90707 !important;
-  /* ✅ Force pure white just for this line */
+  color: var(--text-tertiary);
 }
 
 .contact-invite {
@@ -196,7 +198,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: #ccc;
+  color: var(--text-secondary);
 }
 
 /* 📱 Responsive fix for smaller screens */
@@ -210,5 +212,23 @@ body {
   .coffee-icon {
     font-size: 2rem;
     margin-top: 0.5rem;
+  }
+}
+
+/* =========================================
+   Desktop Footer (Full width, flush to bottom) 
+   ========================================= */
+@media (min-width: 769px) {
+  .contact-footer {
+    width: 100%; 
+    max-width: 100%; /* Overrides the 720px limit so it spans the whole screen */
+    margin: 0; /* Removes the 1.5rem bottom margin so it touches the exact bottom */
+    border-radius: 0; /* Removes the rounded corners so it sits flush against the left, right, and bottom edges */
+    box-sizing: border-box; 
+    
+    /* Optional: If you want to keep a subtle glass border only on the top edge */
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
   }
 }

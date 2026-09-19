@@ -1,6 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './Blogs.css';
 import { FaMedium, FaDev } from 'react-icons/fa';
+import { staggerContainer, fadeSlideUp, cardHover } from '../motion';
 
 const blogs = [
   {
@@ -29,20 +31,48 @@ const blogs = [
 const Blogs: React.FC = () => {
   return (
     <div className="blogs-container">
-      <h2 className="blogs-title">✍️ Blog Posts</h2>
-      <p className="blogs-intro">A collection of best thoughts and tutorials on software development.</p>
-      <div className="blogs-grid">
+      <motion.h2
+        className="blogs-title"
+        initial={{ opacity: 0, y: -24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        ✍️ Blog Posts
+      </motion.h2>
+      <motion.p
+        className="blogs-intro"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.15 }}
+      >
+        A collection of best thoughts and tutorials on software development.
+      </motion.p>
+      <motion.div
+        className="blogs-grid"
+        variants={staggerContainer(0.1)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
         {blogs.map((blog, index) => (
-          <a href={blog.link} key={index} target="_blank" rel="noopener noreferrer" className="blog-card" style={{ '--delay': `${index * 0.2}s` } as React.CSSProperties}>
-            <div className="blog-icon animated-icon">{blog.icon}</div>
-            <div className="blog-info animated-text">
+          <motion.a
+            href={blog.link}
+            key={index}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="blog-card"
+            variants={fadeSlideUp}
+            {...cardHover}
+          >
+            <div className="blog-icon">{blog.icon}</div>
+            <div className="blog-info">
               <h3 className="blog-title">{blog.title}</h3>
               <p className="blog-description">{blog.description}</p>
               <span className="blog-platform">{blog.platform}</span>
             </div>
-          </a>
+          </motion.a>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

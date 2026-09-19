@@ -1,41 +1,74 @@
 .netflix-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1.5rem;
   height: 100vh;
-  background-color: #141414;
+  background-color: var(--bg-base);
   overflow: hidden;
+  cursor: pointer;
 }
 
 .netflix-logo {
   width: 500px;
+  max-width: 80vw;
   height: auto;
-  opacity: 0;
-  transform: scale(0.8);
-  animation: fadeIn 0.5s forwards ease-in;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
+.netflix-hint {
+  padding: 0.6rem 1.4rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+/* Makes the base button relative and dims the static border */
+.netflix-hint {
+  position: relative;
+  border-color: rgba(255, 255, 255, 0.15) !important; 
+}
+
+/* Creates the mask that limits the light specifically to the border */
+.border-beam {
+  position: absolute;
+  inset: -1px; /* Aligns exactly on top of the original 1px border */
+  border-radius: inherit; /* Matches the pill shape automatically */
+  padding: 1px; /* The thickness of the light beam */
+  
+  /* CSS Mask Magic: Cuts out the center so the glass effect is preserved */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* The actual light beam */
+.border-beam::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400%; /* Large enough to cover the pill width during rotation */
+  height: 400%;
+  
+  /* The Light Profile: Transparent for 75%, fading to a soft trail, ending in intense white */
+  background: conic-gradient(
+    transparent 0%, 
+    transparent 75%, 
+    rgba(255, 255, 255, 0.15) 85%, 
+    rgba(255, 255, 255, 0.8) 98%, 
+    #ffffff 100%
+  );
+  animation: spin-beam 3s linear infinite;
+}
+
+@keyframes spin-beam {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
-}
-
-.animate.netflix-logo {
-  animation: zoomOut 3s forwards ease-in-out;
-}
-
-@keyframes zoomOut {
-
-  0%,
-  80% {
-    transform: scale(0.8);
-    opacity: 1;
-  }
-
   100% {
-    transform: scale(3);
-    opacity: 0;
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }

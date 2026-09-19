@@ -1,16 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { motion } from 'framer-motion';
 import './Skills.css';
 import { skillsData } from '../data/constants';
 
 import {
-  FaReact, FaNodeJs, FaAws, FaDocker, FaGitAlt, FaPuzzlePiece, FaProjectDiagram,
+  FaReact,
+  FaNodeJs,
+  FaAws,
+  FaDocker,
+  FaGitAlt,
+  FaPuzzlePiece,
+  FaProjectDiagram,
+  FaFileExcel,
 } from 'react-icons/fa';
 import {
   SiC, SiCplusplus, SiJavascript, SiPython, SiDart, SiKotlin,
   SiHtml5, SiCss3, SiAngular, SiFlutter, SiFirebase,
   SiGooglecloud, SiFigma, SiRedux, SiGraphql, SiSpringboot,
-  SiMicrosoftexcel, SiFlask, SiApachenetbeanside, SiAndroidstudio, SiCodemagic,
+  SiFlask, SiApachenetbeanside, SiAndroidstudio, SiCodemagic,
 } from 'react-icons/si';
+import { staggerContainer, fadeSlideUp, cardHover } from '../motion';
 
 
 const iconMap: { [key: string]: JSX.Element } = {
@@ -30,7 +39,7 @@ const iconMap: { [key: string]: JSX.Element } = {
   SiRedux: <SiRedux />,
   SiGraphql: <SiGraphql />,
   SiSpringboot: <SiSpringboot />,
-  SiMicrosoftexcel: <SiMicrosoftexcel />,
+  SiMicrosoftexcel: <FaFileExcel />,
   SiFlask: <SiFlask />,
   SiApachenetbeanside: <SiApachenetbeanside />, // fallback for RESTful APIs
   FaReact: <FaReact />,
@@ -46,6 +55,11 @@ const iconMap: { [key: string]: JSX.Element } = {
 };
 
 const Skills: React.FC = () => {
+  // Add this block to force the page to scroll to the top on load!
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Group skills by category
   const skillsByCategory = skillsData.reduce((acc: any, skill: any) => {
     if (!acc[skill.category]) acc[skill.category] = [];
@@ -57,10 +71,24 @@ const Skills: React.FC = () => {
     <div className="skills-container" id="skills">
       {Object.keys(skillsByCategory).map((category, index) => (
         <div key={index} className="skill-category">
-          <h3 className="category-title">{category}</h3>
-          <div className="skills-grid">
+          <motion.h3
+            className="category-title"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.5 }}
+          >
+            {category}
+          </motion.h3>
+          <motion.div
+            className="skills-grid"
+            variants={staggerContainer(0.06)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {skillsByCategory[category].map((skill: any, idx: number) => (
-              <div key={idx} className="skill-card">
+              <motion.div key={idx} className="skill-card" variants={fadeSlideUp} {...cardHover}>
                 <div className="icon">
                   {iconMap[skill.icon] || <FaReact />}
                 </div>
@@ -72,9 +100,9 @@ const Skills: React.FC = () => {
                   ))}
                 </h3>
                 <p className="skill-description">{skill.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       ))}
     </div>

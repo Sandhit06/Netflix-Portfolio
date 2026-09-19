@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { buttonTap } from '../motion';
 import './PlayButton.css';
 
 interface PlayButtonProps {
@@ -8,7 +10,7 @@ interface PlayButtonProps {
 
 const PlayButton: React.FC<PlayButtonProps> = ({ onClick, label = "Play" }) => {
     return (
-        <button className="play-button" onClick={onClick} type="button">
+        <motion.button className="play-button" onClick={onClick} type="button" {...buttonTap}>
             <div className="icon-container">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +29,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({ onClick, label = "Play" }) => {
             </div>
             <div className="spacer"></div>
             <span className="label">{label}</span>
-        </button>
+        </motion.button>
     );
 };
 

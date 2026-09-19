@@ -1,27 +1,53 @@
 /* Navbar.css */
 
-/* Main Navbar Styling */
+/* Main Navbar Styling — defaults to completely transparent */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #fff;
+  color: var(--text-primary);
   position: fixed;
   width: 100%;
   top: 0;
-  background-image: linear-gradient(180deg, rgb(0 0 1 / 90%) 10%, transparent 100%);
+  
+  /* Start completely transparent with no blur */
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  
   padding: 20px;
-  z-index: 3;
-  transition: background-color 0.3s ease;
+  z-index: 10;
+  transition: background var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard),
+    backdrop-filter var(--duration-base) var(--ease-standard);
 }
 
-.navbar.scrolled {
-  background-color: #141414; /* Netflix black when scrolled */
+/* SCROLLED STATE - Wrapped in a media query so it ONLY applies to Laptops/Desktops */
+@media (min-width: 769px) {
+  .navbar {
+    width: 100%; 
+    left: 0; 
+    top: 0; 
+    
+    /* THE FIX: Forces padding to stay inside the 100% width */
+    box-sizing: border-box; 
+    
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl); 
+  }
+
+  .navbar.scrolled {
+    background: var(--glass-bg-strong);
+    -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+    backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+    border-bottom: 1px solid var(--glass-border); 
+    box-shadow: var(--shadow-md); 
+  }
 }
 
 .navbar-left, .navbar-right {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 .navbar-logo img {
@@ -41,14 +67,14 @@
 }
 
 .navbar-links li a {
-  color: #fff;
+  color: var(--text-primary);
   text-decoration: none;
   font-size: 1.05rem;
-  transition: color 0.3s;
+  transition: color var(--duration-base) var(--ease-standard);
 }
 
 .navbar-links li a:hover {
-  color: #e50914; /* Netflix red */
+  color: var(--accent);
 }
 
 /* Profile Icon */
@@ -56,9 +82,17 @@
   width: 30px;
   height: 30px;
   border-radius: 15%;
-  transition: transform 0.3s;
-  margin-right: 3rem;
+  transition: transform var(--duration-fast) var(--ease-spring-out);
+  margin-right: 4vw;
   cursor: pointer;
+}
+
+.profile-icon:hover {
+  transform: scale(1.08);
+}
+
+.profile-icon:active {
+  transform: scale(0.95);
 }
 
 /* Hide the hamburger and sidebar in desktop view */
@@ -68,8 +102,22 @@
   display: none;
 }
 
+
 /* Mobile-specific styling */
 @media (max-width: 768px) {
+  /* OPTION A: Apply padding to the entire navbar (Recommended for perfect symmetry) */
+  .navbar {
+    /* 5vw calculates to 5% of the screen width, ensuring both sides are perfectly equal */
+    padding-left: 5vw !important;
+    padding-right: 3vw !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  /* OPTION B: If Option A shifts your left logo too much, use this to just push the right icon inward */
+  .profile-icon {
+    margin-right: 2vw !important; 
+  }
   .navbar-logo img {
     height: 20px;
     margin-right: auto;
@@ -87,54 +135,65 @@
 
   /* Show Hamburger Menu */
   .hamburger {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
   }
 
   .hamburger div {
     width: 25px;
     height: 3px;
-    background-color: #fff;
-    margin: 4px;
-    transition: 0.3s;
+    border-radius: var(--radius-pill);
+    background-color: var(--text-primary);
+    margin: 4px 0;
+    transition: transform var(--duration-base) var(--ease-standard),
+      opacity var(--duration-base) var(--ease-standard);
   }
 
-  /* Sidebar Overlay */
+  /* Morph the three bars into an X while the sidebar is open */
+  .hamburger.open div:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.open div:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open div:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Sidebar Overlay — dimming scrim behind the glass sidebar */
   .sidebar-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 3;
-    display: none;
+    background: var(--scrim-strong);
+    z-index: 15;
   }
 
-  .sidebar-overlay.open {
-    display: block;
-  }
-
-  /* Sidebar Styling */
+  /* Sidebar Styling — full-height glass panel */
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 70%;
-    background-color: #141414;
-    color: #fff;
+    max-width: 320px;
+    background: var(--glass-bg-strong);
+    -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+    backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+    border-right: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    color: var(--text-primary);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 4;
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
+    z-index: 16;
   }
 
   .sidebar-logo img {
@@ -155,12 +214,17 @@
   }
   
   .sidebar ul li a {
-    color: #fff;
+    color: var(--text-primary);
     text-decoration: none;
     font-size: 1.2rem;
     display: flex;
     align-items: center;
     gap: 8px;
+    transition: color var(--duration-base) var(--ease-standard);
+  }
+
+  .sidebar ul li a:hover {
+    color: var(--accent);
   }
 
   /* Close button inside the sidebar */
@@ -168,11 +232,5 @@
     font-size: 1.5rem;
     margin-right: 5px;
   }
-
-  /* Sidebar adjustments */
-  .sidebar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }
+

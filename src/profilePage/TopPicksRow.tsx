@@ -1,9 +1,11 @@
 // TopPicksRow.tsx
-import React from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './TopPicksRow.css';
 import { FaCode, FaBriefcase, FaCertificate, FaHandsHelping, FaProjectDiagram, FaEnvelope, FaMusic, FaBook } from 'react-icons/fa';
 import { ProfileType } from '../types';
+import { staggerContainer, fadeSlideUp, cardHover } from '../motion';
 
 interface TopPicksRowProps {
   profile: ProfileType;
@@ -18,7 +20,7 @@ const topPicksConfig: Record<ProfileType, { title: string; imgSrc: string; icon:
     { title: "Certifications", imgSrc: "https://picsum.photos/seed/certifications/250/200", icon: <FaCertificate />, route: "/certifications" },
     { title: "Contact Me", imgSrc: "https://picsum.photos/seed/contact/250/200", icon: <FaEnvelope />, route: "/contact-me" }
   ],
-  developer: [
+  Developer: [
     { title: "Skills", imgSrc: "https://picsum.photos/seed/coding/250/200", route: "/skills", icon: <FaCode /> },
     { title: "Projects", imgSrc: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742627590/hackers_1_jh5vtu.webp", route: "/projects", icon: <FaProjectDiagram /> },
     { title: "Certifications", imgSrc: "https://picsum.photos/seed/badge/250/200", route: "/certifications", icon: <FaCertificate /> },
@@ -26,7 +28,7 @@ const topPicksConfig: Record<ProfileType, { title: string; imgSrc: string; icon:
     { title: "Recommendations", imgSrc: "https://picsum.photos/seed/networking/250/200", route: "/recommendations", icon: <FaHandsHelping /> },
     { title: "Contact Me", imgSrc: "https://picsum.photos/seed/connect/250/200", route: "/contact-me", icon: <FaEnvelope /> }
   ],
-  stalker: [
+  Stalker: [
     { title: "Recommendations", imgSrc: "https://picsum.photos/seed/networking/250/200", route: "/recommendations", icon: <FaHandsHelping /> },
     { title: "Contact Me", imgSrc: "https://picsum.photos/seed/call/250/200", route: "/contact-me", icon: <FaEnvelope /> },
     { title: "Projects", imgSrc: "https://res.cloudinary.com/dyz1paeem/image/upload/v1742627590/hackers_1_jh5vtu.webp", route: "/projects", icon: <FaProjectDiagram /> },
@@ -45,24 +47,34 @@ const topPicksConfig: Record<ProfileType, { title: string; imgSrc: string; icon:
 const TopPicksRow: React.FC<TopPicksRowProps> = ({ profile }) => {
   const navigate = useNavigate();
   const topPicks = topPicksConfig[profile];
+  const constraintsRef = useRef<HTMLDivElement>(null);
+  const dragDistanceRef = useRef(0);
 
   return (
     <div className="top-picks-row">
       <h2 className="row-title">Today's Top Picks for {profile}</h2>
-      <div className="card-row">
-        {topPicks.map((pick, index) => (
-          <div
-            key={index}
-            className="pick-card"
-            onClick={() => navigate(pick.route)}
-            style={{ animationDelay: `${index * 0.2}s` }}
-          >
-            <img src={pick.imgSrc} alt={pick.title} className="pick-image" />
-            <div className="overlay">
-              <div className="pick-label">{pick.title}</div>
-            </div>
-          </div>
-        ))}
+      <div className="card-row-viewport" ref={constraintsRef}>
+        <motion.div
+          className="card-row"
+          variants={staggerContainer(0.08)}
+          initial="hidden"
+          animate="visible"
+        >
+          {topPicks.map((pick, index) => (
+            <motion.div
+              key={index}
+              className="pick-card"
+              variants={fadeSlideUp}
+              onClick={() => navigate(pick.route)}
+              {...cardHover}
+            >
+              <img src={pick.imgSrc} alt={pick.title} className="pick-image" draggable={false} />
+              <div className="overlay">
+                <div className="pick-label">{pick.title}</div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );

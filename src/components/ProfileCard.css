@@ -7,33 +7,29 @@
   max-width: 200px;
   min-height: 84px;
   min-width: 84px;
+  /* THE FIX: Let the card height grow automatically to fit both image AND text */
+  height: auto;
   text-decoration: none;
   width: 10vw;
   border-radius: 5rem;
 }
 
-.profile-card:hover {
-  border-color: #e5e5e5;
-  color: #e5e5e5;
-}
-
-.profile-name {
-  color: #e5e5e5;
-  text-transform: capitalize;
-}
-
 .image-container {
   position: relative;
   width: 100%;
-  height: 100%;
+  /* THE FIX: Forces the container to stay a perfect square based on its width */
+  aspect-ratio: 1 / 1;
+  height: auto;
   overflow: hidden;
   border-radius: 0.5rem;
   border: 0.2em solid transparent;
+  transition: border-color var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
 }
 
-.image-container:hover {
-  border-color: #e5e5e5;
-  color: #e5e5e5;
+.profile-card:hover .image-container {
+  border-color: var(--accent-contrast);
+  box-shadow: var(--shadow-accent);
 }
 
 .profile-image {
@@ -43,7 +39,7 @@
 }
 
 .profile-name {
-  color: white;
+  color: var(--text-primary);
   display: block;
   font-size: 1.3vw;
   line-height: 1.2em;
@@ -57,13 +53,26 @@
 
 @media (max-width: 768px) {
   .profile-card {
-    flex-wrap: wrap;
-    width: 40vw;
-    height: 40vw;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px; /* Lock the card width so the hover effect stays tight */
+    height: auto; /* CRITICAL: Let the card grow vertically to fit the text! */
+    margin: 0 auto;
+  }
+
+  .image-container {
+    width: 100px;
+    height: 100px; /* Lock the image to a perfect square */
+    border-radius: 0.5rem;
   }
 
   .profile-name {
-    font-size: 14px
+    font-size: 14px;
+    margin-top: 12px;
+    width: 100%;
+    text-align: center;
+    min-height: auto; /* Removes the desktop minimum height */
+    line-height: normal;
   }
 }

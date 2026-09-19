@@ -1,11 +1,19 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './Recommendations.css';
 import chrisProfilePic from '../images/chris.jpg'; // Adjust the path based on your directory structure
+import { fadeSlideUp } from '../motion';
 
 const Recommendations: React.FC = () => {
   return (
     <div className='timeline-container'>
-      <div className="recommendation-card">
+      <motion.div
+        className="recommendation-card"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeSlideUp}
+      >
         <div className="recommendation-header">
           <img src={chrisProfilePic} alt="Chris Smith" className="profile-pic" />
           <div>
@@ -20,7 +28,7 @@ const Recommendations: React.FC = () => {
           <p>💼 "Moreover, Sandhit is a person of high integrity and reliability. He can be counted on to uphold the highest ethical standards and to follow through on his commitment. His honesty, dependability, and dedication make them a trusted colleague and friend. We have no doubt that he will excel in any endeavour they choose to pursue."</p>
           <p>🌟 "His combination of skills, character, and work ethic is truly exceptional, and we are confident that they will make a significant contribution to your organisation and excel in their future pursuits.It is with great enthusiasm and without reservation that we recommend him."</p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

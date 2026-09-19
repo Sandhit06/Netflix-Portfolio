@@ -4,44 +4,30 @@
   justify-content: left;
   background-size: cover;
   background-position: center;
-  color: #fff;
+  color: var(--text-primary);
   position: relative;
-  padding-bottom: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
   padding: 40px 20px 20px 20px;
 }
 
-.profile-banner::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-
 .banner-content {
   position: relative;
   max-width: 1000px;
-  font-weight: bold;
   width: 100%;
   padding: 50px 0px;
-  box-sizing: border-box;
   padding-top: 10px;
-  font-weight: bold;
+  box-sizing: border-box;
 }
 
 .banner-headline {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.banner-description {
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4.5vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   margin-bottom: 20px;
-  font-size: 14px;
+  text-shadow: var(--shadow-sm);
 }
 
 .banner-buttons {
@@ -50,62 +36,29 @@
   flex-wrap: wrap;
 }
 
-.banner-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.play-button {
-  background-color: #e50914;
-}
-
-.info-button {
-  background-color: rgba(109, 109, 110, 0.7);
-}
-
-.banner-button:hover {
-  background-color: #b81d24;
-}
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .banner-content {
     max-width: 100%;
+    padding: 0;
   }
+
   .profile-banner {
-    padding: 60px 20px;
-    align-items: center;
-    justify-content: center;
+    /* Keep the content at the bottom of the mobile hero, where the
+       background video/image finishes. Desktop positioning is unchanged. */
+    box-sizing: border-box;
+    padding: 80px 20px max(36px, env(safe-area-inset-bottom));
+    align-items: flex-end;
+    justify-content: flex-start;
   }
 
   .banner-headline {
-    font-size: 2rem;
-    margin-top: 10rem;
+    margin-top: 0;
   }
 
-  .banner-description {
-    line-height: 1.5;
-    font-size: 12px;
-  }
-
-  /* Button adjustments */
   .banner-buttons {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
-
-  .banner-button {
-    width: auto;
-    padding: 10px 15px;
-    font-size: 0.9rem;
-  }
 }
-

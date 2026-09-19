@@ -1,0 +1,154 @@
+/* =====================================================================
+   Design Tokens — Apple-inspired fluid / liquid-glass system
+   ---------------------------------------------------------------------
+   Centralized colors, blur levels, radii, shadows, spacing & CSS-side
+   motion curves. Every component stylesheet should consume these via
+   var(...) instead of hardcoding values. Framer Motion spring presets
+   (the JS-side counterpart) live in src/motion.ts.
+   ===================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* ---- Brand accent (kept from the Netflix identity) ---- */
+  --accent: #e50914;
+  --accent-strong: #ff1a25;
+  --accent-soft: rgba(229, 9, 20, 0.28);
+  --accent-contrast: #ffffff;
+
+  /* ---- Radius scale ---- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---- Blur levels ---- */
+  --blur-sm: 8px;
+  --blur-md: 20px;
+  --blur-lg: 36px;
+
+  /* ---- Spacing scale (available for new/refactored components) ---- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  /* ---- Motion (CSS-side; Framer Motion springs live in src/motion.ts) ---- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+
+  /* ---- Shadows ---- */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.38);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.48);
+  --shadow-accent: 0 10px 30px var(--accent-soft);
+
+  /* ---- Dark, cinematic base with light glass (only theme) ---- */
+  --bg-base: #0b0b0d;
+  --bg-elevated: #141414;
+  --bg-elevated-2: #1c1c1f;
+
+  --text-primary: #f5f5f7;
+  --text-secondary: rgba(245, 245, 247, 0.72);
+  --text-tertiary: rgba(245, 245, 247, 0.46);
+
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-bg-strong: rgba(255, 255, 255, 0.14);
+  --glass-bg-subtle: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-border-bright: rgba(255, 255, 255, 0.38);
+
+  --scrim: rgba(0, 0, 0, 0.55);
+  --scrim-strong: rgba(0, 0, 0, 0.72);
+}
+
+/* ---------------------------------------------------------------
+   Reusable glass primitives
+   --------------------------------------------------------------- */
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(160%);
+  backdrop-filter: blur(var(--blur-md)) saturate(160%);
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-bright);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-panel {
+  border-radius: var(--radius-md);
+}
+
+.glass-strong {
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+  backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+}
+
+.glass-subtle {
+  background: var(--glass-bg-subtle);
+  -webkit-backdrop-filter: blur(var(--blur-sm)) saturate(140%);
+  backdrop-filter: blur(var(--blur-sm)) saturate(140%);
+  box-shadow: var(--shadow-sm);
+}
+
+.glass-pill {
+  border-radius: var(--radius-pill);
+}
+
+/* Fixed-opacity scrim helper — guarantees text legibility over any
+   background photo/GIF regardless of theme or the image's own colors. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--scrim) 0%, var(--scrim-strong) 100%);
+  pointer-events: none;
+}
+
+/* Press feedback for plain (non-Framer) interactive elements */
+.tap-scale {
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+.tap-scale:active {
+  transform: scale(0.97);
+}
+
+/* ---------------------------------------------------------------
+   Accessibility fallbacks (skill §14)
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .glass-strong,
+  .glass-subtle,
+  .navbar {
+    background: var(--bg-elevated) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .glass,
+  .glass-strong,
+  .glass-subtle {
+    background: var(--bg-elevated);
+    border: 1px solid var(--text-primary);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

@@ -1,10 +1,16 @@
 .vertical-timeline-element-content {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
 }
 
 .vertical-timeline-element-content:hover {
   transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-accent) !important;
+}
+
+.vertical-timeline-element-title,
+.vertical-timeline-element-subtitle {
+  color: var(--text-primary) !important;
 }
 
 
@@ -16,7 +22,7 @@
 
 .timeline-title {
   font-size: 2rem;
-  color: #fff;
+  color: var(--text-primary);
   font-weight: bold;
   margin-bottom: 40px;
   display: inline-block;
@@ -45,7 +51,7 @@
 .summary-list {
   padding-left: 1.5rem;
   margin-top: 0.5rem;
-  color: black;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 

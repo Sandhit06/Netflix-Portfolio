@@ -4,11 +4,11 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #141414;
+  background-color: var(--bg-base);
 }
 
 .who-is-watching {
-  color: #fff;
+  color: var(--text-primary);
     font-size: 3.5vw;
     font-weight: unset;
     width: 100%;
@@ -19,13 +19,42 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 10rem;
   justify-content: center;
+}
+
+.profiles.glass {
+  padding: 2.5rem 3rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 6rem;
 }
 
 
 @media (max-width: 768px) {
   .who-is-watching {
     font-size: 30px;
+  }
+
+  .profiles.glass {
+    padding: 1.5rem;
+  }
+}
+
+/* =========================================
+   Mobile View (2x2 Grid) - Max Width 768px
+   ========================================= */
+@media (max-width: 768px) {
+  .profiles {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px 20px !important; 
+    justify-content: center !important;
+    justify-items: center !important; 
+    
+    /* THE FIX: Let the glass pane wrap the content nicely */
+    width: fit-content !important; 
+    max-width: 96% !important; /* Prevents it from touching the absolute edges of the phone screen */
+    margin: 0 auto !important;
+    padding: 2rem !important; /* Adds a clean, even spacing between the cards and the glass edge */
+    box-sizing: border-box !important;
   }
 }

@@ -12,7 +12,7 @@ import { ProfileType } from '../types';
 const ProfilePage: React.FC = () => {
   const { profileName } = useParams<{ profileName: string }>();
 
-  const profile = ['Recruiter', 'developer', 'stalker', 'Adventurer'].includes(profileName!)
+  const profile = ['Recruiter', 'Developer', 'Stalker', 'Adventurer'].includes(profileName!)
     ? (profileName as ProfileType)
     : 'Recruiter';
 

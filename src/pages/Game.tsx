@@ -1,8 +1,10 @@
 // src/pages/Game.tsx
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './Game.css';
 import { FaTimes } from 'react-icons/fa';
+import { buttonTap } from '../motion';
 
 
 const Game: React.FC = () => {
@@ -32,13 +34,14 @@ const Game: React.FC = () => {
                     loading="lazy"
                 />
             </div>
-            <button
-                className="netflix-close-button"
+            <motion.button
+                className="netflix-close-button glass glass-pill"
                 onClick={handleClose}
                 aria-label="Close Game"
+                {...buttonTap}
             >
                 <FaTimes />
-            </button>
+            </motion.button>
         </div>
     );
 };

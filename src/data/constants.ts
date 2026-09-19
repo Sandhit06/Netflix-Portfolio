@@ -109,6 +109,21 @@ export const projectsData = [
 export const timelineData: TimelineItem[] = [
     {
         timelineType: 'work',
+        name: 'Standard Chartered Gloal Business Services',
+        title: 'Software Engineer',
+        techStack: ' SpringBoot, PostgresSQL, Java, React, Micfroservices',
+        summaryPoints: [
+            'Engineered the full DQMA (Data Quality Management & Analytics) module end-to-end in Spring Boot and React.js + Typescript, covering DQ Rule CRUD across 5 rule categories, multi-stage Linkage workflows (Draft -> Review -> Live), Monitor dashboards and Exception tracking, enabling data stewards to govern critical financial data attributes and reducing rule lifecycle management overhead by an estimated 30%. Performed automated testing & Performance testing and increased scalability & efficiency.',
+            'Developed core backend functionality using Spring Boot for template file uploads and failed-record downloads via DQ Monitor, integrating backend APIs with the frontend to streamline file processing and reduce upload time by 30%. Deployed and maintained production applications using PuTTY and WinSCP, ensuring seamless server updates, and consistent application availability.',
+            'Architected the RTDS (Real-Time Data Service) ingestion monitoring dashboard using Dagre.js with 7 parallel visualizations, optimizing concurrent API calls to reduce dashboard load time by ~40% while monitoring millions of daily financial messages.',
+            'Conducted System Integration Testing (SIT), resolved defects, and supported end-to-end software delivery using Azure DevOps (ADO), including Git repositories, CI/CD pipelines, version control, and deployment automation as part of the RTDS sub-squad.',
+            'Standardized 100+ REST API integration patterns by implementing centralized JWT token injection, session-expiry handling and Axios request/response interceptors, reducing per-component boilerplate by ~60% and accelerating consistent API integration.',
+        ],
+        dateRange: 'Sept 2025 - Present'
+    },
+    {
+        
+        timelineType: 'work',
         name: 'Canverro',
         title: 'Flutter Developer',
         techStack: ' Flutter, Firebase, Android, Node-js',
@@ -188,7 +203,6 @@ export const timelineData: TimelineItem[] = [
 // Profile Banner
 export const profileBannerData = {
     headline: "Sandhit Karmakar - Full Stack Developer",
-    profileSummary: "A final-year B.Tech student specializing in CSE - AI & ML at VIT Chennai, with a strong passion for software development and a proven track record of delivering innovative solutions. My core expertise lies in Flutter, where I have developed robust, visually appealing applications for both Android and iOS, while also expanding my skill set in full-stack development using JavaScript frameworks.Throughout my academic and early professional journey, I have progressed from a junior developer to taking on key responsibilities in project management and client engagement. A notable achievement includes spearheading the redesign of a flagship product, leading to a 25% increase in user retention.",
     resumeLink: "https://drive.google.com/file/d/1BODZFawoOLGH89k0TrMUeF-fR1PKwExU/view?usp=sharing",
     linkedinLink: "https://www.linkedin.com/in/sandhit-karmakar/",
     backgroundImage: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTZ5eWwwbjRpdWM1amxyd3VueHhteTVzajVjeGZtZGJ1dDc4MXMyNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/16u7Ifl2T4zYfQ932F/giphy.gif"
@@ -199,7 +213,7 @@ export const profileBannerData = {
 export const contactInfo = {
     name: "Sandhit Karmakar",
     title: "Full-Stack Developer",
-    summary: "Actively seeking full-time opportunities in Android and Web Development, leveraging strong expertise in both domains.",
+    summary: "Actively seeking full-time opportunities in backend and data engineering, leveraging strong expertise in both domains.",
     companyUniversity: "VIT Chennai",
     linkedinLink: "https://www.linkedin.com/in/sandhit-karmakar/",
     email: "sandhitkarmakar@gmail.com",
@@ -283,14 +297,14 @@ export const profiles = [
         backgroundGif: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTZ5eWwwbjRpdWM1amxyd3VueHhteTVzajVjeGZtZGJ1dDc4MXMyNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9dg/16u7Ifl2T4zYfQ932F/giphy.gif" // Dark storm clouds
     },
     {
-        name: "developer",
+        name: "Developer",
         image: greyImage,
         backgroundGif: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGNidDl5emZpejY2eGFxa2I4NW0zZGNpbWRlbnBrZ3N2dWhhbzM1MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TFPdmm3rdzeZ0kP3zG/giphy.gif" // Flickering neon lights
     },
     {
-        name: "stalker",
+        name: "Stalker",
         image: redImage,
-        backgroundGif: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExc28yMjMyZmJ6eWtxbmNwdDV6cXk4dWZmcjFhZms2cXBjN2h5ZDJjeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QjZXUBUr89CkiWLPjL/giphy.gif" // Dark, abstract digital lights
+        backgroundGif: "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3czcwZ3VrazA0YjAyNzlnMW1tOXBmdGxhZmd2anlmaXBydTA2ZGpmZCZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/5VKbvrjxpVJCM/giphy.gif" // Dark, abstract digital lights
     },
     {
         name: "Adventurer",

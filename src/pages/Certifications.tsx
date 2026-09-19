@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import './Certifications.css';
 import { FaExternalLinkAlt, FaUniversity } from 'react-icons/fa';
 import { SiGooglecloud, SiUdemy, SiCoursera, SiIeee, SiHackerrank, SiAmazon } from 'react-icons/si';
 import { Certification } from '../types';
 import { certificationsData } from '../data/constants';
+import { staggerContainer, fadeSlideUp, cardHover } from '../motion';
 const iconData: { [key: string]: JSX.Element } = {
   'udemy': <SiUdemy />,
   'coursera': <SiCoursera />,
@@ -31,9 +33,23 @@ const Certifications: React.FC = () => {
 
   return (
     <div className="certifications-container">
-      <div className="certifications-grid">
+      <motion.div
+        className="certifications-grid"
+        variants={staggerContainer(0.08)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
         {certifications.map((cert, index) => (
-          <a href={cert.link} key={index} target="_blank" rel="noopener noreferrer" className="certification-card" style={{ '--delay': `${index * 0.2}s` } as React.CSSProperties}>
+          <motion.a
+            href={cert.link}
+            key={index}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="certification-card"
+            variants={fadeSlideUp}
+            {...cardHover}
+          >
             <div className="certification-content">
               <div className="certification-icon">{iconData[cert.iconName] || <FaUniversity />}</div>
               <h3>{cert.title}</h3>
@@ -43,9 +59,9 @@ const Certifications: React.FC = () => {
             <div className="certification-link animated-icon">
               <FaExternalLinkAlt />
             </div>
-          </a>
+          </motion.a>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

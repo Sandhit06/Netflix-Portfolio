@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { MdOutlineWork as WorkIcon } from 'react-icons/md';
@@ -16,7 +17,6 @@ const WorkExperience: React.FC = () => {
 
 
   if (!timeLineData) return <div>Loading...</div>;
-  console.log("🚀 ~ timeLineData:", timeLineData)
 
   return (
     <>
@@ -30,37 +30,58 @@ const WorkExperience: React.FC = () => {
             className={`vertical-timeline-element--${item.timelineType}`}
             contentStyle={
               item.timelineType === "work"
-                ? index === 0
-                  ? { background: 'rgb(33, 150, 243)', color: '#fff' }
-                  : { background: 'rgb(240, 240, 240)', color: '#fff' }
-                : { background: 'rgb(255, 224, 230)', color: '#fff' } // Lighter red for education
+                ? {
+                  background: index === 0 ? 'var(--glass-bg-strong)' : 'var(--glass-bg)',
+                  color: 'var(--text-primary)',
+                  border: '1px solid var(--glass-border)',
+                  borderTopColor: 'var(--glass-border-bright)',
+                  backdropFilter: 'blur(20px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                  boxShadow: index === 0 ? 'var(--shadow-md)' : 'var(--shadow-sm)',
+                }
+                : {
+                  background: 'rgba(229, 9, 20, 0.1)',
+                  color: 'var(--text-primary)',
+                  border: '1px solid var(--glass-border)',
+                  backdropFilter: 'blur(20px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                  boxShadow: 'var(--shadow-sm)',
+                }
             }
             contentArrowStyle={
               item.timelineType === "work"
-                ? { borderRight: index === 0 ? '7px solid rgb(33, 150, 243)' : '7px solid rgb(240, 240, 240)' }
-                : { borderRight: '7px solid rgb(255, 224, 230)' }
+                ? { borderRight: index === 0 ? '7px solid rgba(255, 255, 255, 0.22)' : '7px solid rgba(255, 255, 255, 0.12)' }
+                : { borderRight: '7px solid rgba(229, 9, 20, 0.18)' }
             }
             date={item.dateRange}
-            iconStyle={
-              item.timelineType === "work"
-                ? { background: 'rgb(33, 150, 243)', color: '#fff' }
-                : { background: 'rgb(255, 160, 200)', color: '#fff' } // Softer red for education icon
-            }
+            iconStyle={{ background: 'var(--accent)', color: '#fff', boxShadow: '0 0 0 4px var(--glass-border)' }}
             icon={item.timelineType === "work" ? <WorkIcon /> : <SchoolIcon />}
           >
             {item.timelineType === "work" ? (
-              <div style={{ color: 'black' }}>
+              <motion.div
+                style={{ color: 'var(--text-primary)' }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.5 }}
+              >
                 <h3 className="vertical-timeline-element-title">{item.title}</h3>
                 <h4 className="vertical-timeline-element-subtitle">{item.name}</h4>
-                <p className="vertical-timeline-element-tech">🔧 {item.techStack}</p>
+                <p className="vertical-timeline-element-tech">💼 {item.techStack}</p>
                 <ul className="summary-list">
                   {item.summaryPoints.map((point, i) => (
                     <li key={i}>{point}</li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ) : (
-              <div style={{ color: 'black' }}>
+              <motion.div
+                style={{ color: 'var(--text-primary)' }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.5 }}
+              >
                 <h3 className="vertical-timeline-element-title">{item.name}</h3>
                 <h4 className="vertical-timeline-element-subtitle">{item.title}</h4>
                 <ul className="summary-list">
@@ -68,7 +89,7 @@ const WorkExperience: React.FC = () => {
                     <li key={i}>{point}</li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             )}
           </VerticalTimelineElement>
         ))}

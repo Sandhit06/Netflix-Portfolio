@@ -5,7 +5,6 @@ export interface ProfileBanner {
   headline: string;
   resumeLink: string;              // Direct URL string
   linkedinLink: string;
-  profileSummary: string;
 }
 
 
@@ -51,4 +50,4 @@ export interface Skill {
   icon: string;
 }
 
-export type ProfileType = 'Recruiter' | 'developer' | 'stalker' | 'Adventurer';
+export type ProfileType = 'Recruiter' | 'Developer' | 'Stalker' | 'Adventurer';

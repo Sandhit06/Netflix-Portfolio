@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
+import { motion } from 'framer-motion';
 import './Projects.css';
 import { FaReact, FaNodeJs, FaAws, FaDatabase, FaDocker, FaAngular, FaGithub, FaGitlab, FaGoogle, FaJava, FaJenkins, FaMicrosoft, FaPython, FaVuejs } from 'react-icons/fa';
 import { SiRubyonrails, SiPostgresql, SiFlutter, SiKotlin, SiMongodb, SiMaterialdesign, SiHtml5, SiCss3, SiJquery, SiAwsamplify, SiFirebase, SiTerraform, SiArgo } from 'react-icons/si';
 import { Project } from '../types';
 import { projectsData } from '../data/constants';
+import { staggerContainer, fadeSlideUp, cardHover } from '../motion';
 
 import { GrDeploy, GrKubernetes } from "react-icons/gr";
 
@@ -66,6 +68,10 @@ const techIcons: { [key: string]: JSX.Element } = {
 const Projects: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([])
 
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     async function fetchProjects() {
       const data = projectsData;
@@ -79,13 +85,15 @@ const Projects: React.FC = () => {
 
   return (
     <div className="projects-container">
-      <div className="projects-grid">
+      <motion.div
+        className="projects-grid"
+        variants={staggerContainer(0.08)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
         {projects.map((project, index) => (
-          <div
-            key={index}
-            className="project-card"
-            style={{ '--delay': `${index * 0.1}s` } as React.CSSProperties}
-          >
+          <motion.div key={index} className="project-card" variants={fadeSlideUp} {...cardHover}>
             <img src={project.image} alt={project.title} className="project-image" />
             <div className="project-details">
               <h3>{project.title}</h3>
@@ -93,14 +101,14 @@ const Projects: React.FC = () => {
               <div className="tech-used">
                 {project.techUsed.split(', ').map((tech, i) => (
                   <span key={i} className="tech-badge">
-                    {techIcons[tech] || "🔧"} {tech}
+                    {techIcons[tech] || "💼"} {tech}
                   </span>
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
